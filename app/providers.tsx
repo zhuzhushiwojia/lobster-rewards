@@ -5,11 +5,11 @@ import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter, SolflareWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
-import { ReactNode, useMemo } from "react";
+import { useMemo } from "react";
 
 import "@solana/wallet-adapter-react-ui/styles.css";
 
-export function Providers({ children }: { children: ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   const network = WalletAdapterNetwork.Devnet;
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
   
@@ -22,6 +22,7 @@ export function Providers({ children }: { children: ReactNode }) {
   );
 
   return (
+    // @ts-expect-error - Type incompatibility with React 18
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect={false}>
         <WalletModalProvider>
