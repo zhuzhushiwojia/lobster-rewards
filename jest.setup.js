@@ -4,7 +4,7 @@
  * 在每个测试文件之前运行
  */
 
-import "@testing-library/jest-dom";
+require("@testing-library/jest-dom");
 
 // Mock window.matchMedia
 Object.defineProperty(window, "matchMedia", {
