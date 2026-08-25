@@ -1,43 +1,29 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Providers } from "./providers";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next'
+import { Providers } from './providers'
+import '@solana/wallet-adapter-react-ui/styles.css'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Lobster Rewards - Earn Crypto on Solana",
-  description: "Complete tasks, refer friends, and earn DeAura tokens on Solana. Join the Lobster Rewards community and start earning today! 🦞",
-  keywords: ["Solana", "DeAura", "Crypto Rewards", "DeFi", "TokenTon26"],
+  title: 'Lobster Rewards - Earn Crypto on Solana',
+  description: 'Complete tasks, refer friends, and earn DeAura tokens on Solana Devnet',
+  keywords: ['solana', 'rewards', 'orca', 'swap', 'devnet', 'lobster'],
   openGraph: {
-    title: "Lobster Rewards - Earn Crypto on Solana",
-    description: "Complete tasks, refer friends, and earn DeAura tokens",
-    type: "website",
+    title: 'Lobster Rewards',
+    description: 'Earn Crypto Rewards on Solana',
+    type: 'website',
   },
-};
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Providers>
-          {children}
-        </Providers>
+      <body className="min-h-screen bg-stone-950 text-white antialiased">
+        <Providers>{children}</Providers>
       </body>
     </html>
-  );
+  )
 }
